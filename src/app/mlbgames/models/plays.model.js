@@ -1,0 +1,63 @@
+var mongoose = require('mongoose');  
+const Schema = mongoose.Schema; 
+var Pitches = new mongoose.Schema({
+    PitchID: {type: Number, default:null},
+    PlayID: {type: Number, default:null},
+    PitchNumberThisAtBat: {type: Number, default:null},
+    PitcherID: {type: Number, default:null},
+    HitterID: {type: Number, default:null},
+    Outs: {type: Number, default:null},
+    BallsBeforePitch: {type: Number, default:null},
+    StrikesBeforePitch: {type: Number, default:null},
+    Strike: {type: Boolean, default:null},
+    Ball: {type: Boolean, default:null},
+    Foul: {type: Boolean, default:null},
+    Swinging: {type: Boolean, default:null},
+    Looking: {type: Boolean, default:null}
+});
+var PlaysSchema = new mongoose.Schema({ 
+        games: {type: Schema.Types.ObjectId, ref: 'Games'},
+        PlayID: {type: Number, default:null},
+        InningID: {type: Number, default:null},
+        InningNumber: {type: Number, default:null},
+        InningHalf: {type: String, default:null},
+        PlayNumber: {type: Number, default:null},
+        InningBatterNumber: {type: Number, default:null},
+        AwayTeamRuns: {type: Number, default:null},
+        HomeTeamRuns: {type: Number, default:null},
+        HitterID: {type: Number, default:null},
+        PitcherID: {type: Number, default:null},
+        HitterTeamID: {type: Number, default:null},
+        PitcherTeamID: {type: Number, default:null},
+        HitterName: {type: String, default:null},
+        PitcherName: {type: String, default:null},
+        PitcherThrowHand: {type: String, default:null},
+        HitterBatHand: {type: String, default:null},
+        HitterPosition: {type: String, default:null},
+        Outs: {type: Number, default:null},
+        Balls: {type: Number, default:null},
+        Strikes: {type: Number, default:null},
+        PitchNumberThisAtBat: {type: Number, default:null},
+        Result: {type: String, default:null},
+        NumberOfOutsOnPlay: {type: Number, default:null},
+        RunsBattedIn: {type: Number, default:null},
+        AtBat: {type: Boolean, default:null},
+        Strikeout: {type: Boolean, default:null},
+        Walk: {type: Boolean, default:null},
+        Hit: {type: Boolean, default:null},
+        Out: {type: Boolean, default:null},
+        Sacrifice: {type: Boolean, default:null},
+        Error: {type: Boolean, default:null},
+        Updated: {type: Date, default:null},
+        Description:{type: String, default:null},
+        Runner1ID: {type: Number, default:null},
+        Runner2ID: {type: Number, default:null},
+        Runner3ID: {type: Number, default:null},
+        Pitches:[Pitches],
+        isUndo:{type: Boolean, default:false},
+        created_at: { type : Date, default: Date.now }, 
+        updated_at: { type : Date, default: Date.now }
+});
+mongoose.model('Plays', PlaysSchema,'plays');
+
+module.exports = mongoose.model('Plays');
